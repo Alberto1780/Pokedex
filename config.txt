@@ -1,0 +1,8 @@
+-- Configuração do GIT
+git config --global user.name Alberto1780
+git config --global user.email albertobitocursos@gmail.com
+
+-- Abrir o Terminal - Ctrl + ' 
+dotnet new gitignore
+dotnet new mvc -o Pokedex
+cd Pokedex
