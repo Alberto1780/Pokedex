@@ -9,6 +9,6 @@ public class Regiao
     public uint Id { get; set; }
 
     [StringLength(30)]
-    [Required(ErrorMessage = "Por favor, informe a região")]
+    [Required(ErrorMessage = "Por favor, informe o nome")]
     public string Nome { get; set; }
 }

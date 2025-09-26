@@ -12,7 +12,10 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly AppDbContext _db;
 
-    public HomeController(ILogger<HomeController> logger, AppDbContext db)
+    public HomeController(
+        ILogger<HomeController> logger,
+        AppDbContext db
+    )
     {
         _logger = logger;
         _db = db;
@@ -20,12 +23,12 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        HomeVM home = new(){
+        HomeVM home = new() {
             Tipos = _db.Tipos.ToList(),
             Pokemons = _db.Pokemons
-            .Include(p => p.Tipos)
-            .ThenInclude(t => t.Tipo)
-            .ToList()
+                .Include(p => p.Tipos)
+                .ThenInclude(t => t.Tipo)
+                .ToList()
         };
         return View(home);
     }
@@ -46,10 +49,10 @@ public class HomeController : Controller
                 .OrderByDescending(p => p.Numero)
                 .FirstOrDefault(p => p.Numero < id),
             Proximo = _db.Pokemons
-                            .OrderByDescending(p => p.Numero)
+                .OrderBy(p => p.Numero)
                 .FirstOrDefault(p => p.Numero > id)
         };
-        return View(pokemon);
+        return View(detail);
     }
 
     public IActionResult Privacy()
@@ -62,5 +65,4 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-
 }

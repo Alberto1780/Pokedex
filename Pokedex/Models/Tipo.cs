@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Pokedex.Models;
 
 [Table("Tipo")]
@@ -11,7 +10,6 @@ public class Tipo
 
     [StringLength(30)]
     [Required(ErrorMessage = "Por favor, informe o nome")]
-
     public string Nome { get; set; }
 
     [StringLength(25)]

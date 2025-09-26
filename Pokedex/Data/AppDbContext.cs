@@ -1,18 +1,17 @@
-using System.Formats.Tar;
 using Microsoft.EntityFrameworkCore;
 using Pokedex.Models;
 
 namespace Pokedex.Data;
 
-    public class AppDbContext : DbContext
+public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
 
     public DbSet<Genero> Generos { get; set; }
-    public DbSet<PokemonTipo> PokemonTipos { get; set; }
     public DbSet<Pokemon> Pokemons { get; set; }
+    public DbSet<PokemonTipo> PokemonTipos { get; set; }
     public DbSet<Regiao> Regioes { get; set; }
     public DbSet<Tipo> Tipos { get; set; }
 
@@ -21,7 +20,7 @@ namespace Pokedex.Data;
         base.OnModelCreating(builder);
 
         #region Muitos para Muitos do Pokemon Tipo
-        // Configuração da Chave Primária 
+        // Configuração da Chave Primária
         builder.Entity<PokemonTipo>().HasKey(
             pt => new { pt.PokemonNumero, pt.TipoId }
         );
